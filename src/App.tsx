@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function App(): JSX.Element {
-  const [tasks, setTasks] = useState(['タスク1', 'タスク2', 'タスク3']);
+  const [tasks, setTasks] = useState<string[]>([]);
   const [text, setText] = useState('');
 
   const handleAddTask = (task: string) => {
