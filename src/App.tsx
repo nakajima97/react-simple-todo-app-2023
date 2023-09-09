@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import InputText from './components/atoms/InputText';
+import AddTask from './components/organisms/AddTask/Index';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState<string[]>([]);
-  const [text, setText] = useState('');
 
   const handleAddTask = (task: string) => {
     setTasks([...tasks, task]);
-    setText('');
   };
 
   const handleFinishTask = (index: number) => {
@@ -22,15 +20,7 @@ function App(): JSX.Element {
       <div>
         <h2>タスク追加</h2>
         <div>
-          <InputText input={text} onInputChange={setText} />
-          <button
-            name="add-task-button"
-            onClick={() => {
-              handleAddTask(text);
-            }}
-          >
-            タスクを追加する
-          </button>
+          <AddTask handleAddTask={handleAddTask} />
         </div>
         <h2>タスク一覧</h2>
         <div>
