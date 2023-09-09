@@ -9,6 +9,12 @@ function App(): JSX.Element {
     setText('');
   };
 
+  const handleFinishTask = (index: number) => {
+    const newTasks = tasks.filter((element, key) => key !== index);
+
+    setTasks(newTasks);
+  };
+
   return (
     <div>
       <h1>Todoアプリ</h1>
@@ -36,7 +42,16 @@ function App(): JSX.Element {
         <div>
           <ul>
             {tasks.map((task, key) => (
-              <li key={key}>{task}</li>
+              <li key={key}>
+                {task}
+                <button
+                  onClick={() => {
+                    handleFinishTask(key);
+                  }}
+                >
+                  完了
+                </button>
+              </li>
             ))}
           </ul>
         </div>
