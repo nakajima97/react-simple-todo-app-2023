@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import AddTask from './components/organisms/AddTask/Index';
+import TaskList from './components/organisms/TaskList';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState<string[]>([]);
-  const [text, setText] = useState('');
 
   const handleAddTask = (task: string) => {
     setTasks([...tasks, task]);
-    setText('');
   };
 
   const handleFinishTask = (index: number) => {
@@ -21,39 +21,11 @@ function App(): JSX.Element {
       <div>
         <h2>タスク追加</h2>
         <div>
-          <input
-            type="text"
-            name="add-task-input"
-            value={text}
-            onChange={(event) => {
-              setText(event.target.value);
-            }}
-          />
-          <button
-            name="add-task-button"
-            onClick={() => {
-              handleAddTask(text);
-            }}
-          >
-            タスクを追加する
-          </button>
+          <AddTask handleAddTask={handleAddTask} />
         </div>
         <h2>タスク一覧</h2>
         <div>
-          <ul>
-            {tasks.map((task, key) => (
-              <li key={key}>
-                {task}
-                <button
-                  onClick={() => {
-                    handleFinishTask(key);
-                  }}
-                >
-                  完了
-                </button>
-              </li>
-            ))}
-          </ul>
+          <TaskList tasks={tasks} handleFinishTask={handleFinishTask} />
         </div>
       </div>
     </div>
