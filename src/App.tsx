@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AddTask from './components/organisms/AddTask/Index';
+import TaskList from './components/organisms/TaskList';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -24,20 +25,7 @@ function App(): JSX.Element {
         </div>
         <h2>タスク一覧</h2>
         <div>
-          <ul>
-            {tasks.map((task, key) => (
-              <li key={key}>
-                {task}
-                <button
-                  onClick={() => {
-                    handleFinishTask(key);
-                  }}
-                >
-                  完了
-                </button>
-              </li>
-            ))}
-          </ul>
+          <TaskList tasks={tasks} handleFinishTask={handleFinishTask} />
         </div>
       </div>
     </div>
