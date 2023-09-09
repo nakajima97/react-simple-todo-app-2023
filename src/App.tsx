@@ -13,7 +13,7 @@ function App(): JSX.Element {
     <div>
       <h1>Todoアプリ</h1>
       <div>
-        <h2>タスク一覧</h2>
+        <h2>タスク追加</h2>
         <div>
           <input
             type="text"
@@ -32,6 +32,7 @@ function App(): JSX.Element {
             タスクを追加する
           </button>
         </div>
+        <h2>タスク一覧</h2>
         <div>
           <ul>
             {tasks.map((task, key) => (
