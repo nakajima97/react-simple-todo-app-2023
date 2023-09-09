@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import InputText from './components/atoms/InputText';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -21,14 +22,7 @@ function App(): JSX.Element {
       <div>
         <h2>タスク追加</h2>
         <div>
-          <input
-            type="text"
-            name="add-task-input"
-            value={text}
-            onChange={(event) => {
-              setText(event.target.value);
-            }}
-          />
+          <InputText input={text} onInputChange={setText} />
           <button
             name="add-task-button"
             onClick={() => {
